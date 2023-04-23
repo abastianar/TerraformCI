@@ -8,7 +8,7 @@ terraform {
   }
     cloud {
     organization = "abastiantf"
-    
+
     workspaces {
       name = "TerraformCI"
     }
@@ -33,8 +33,10 @@ resource "azurerm_resource_group" "rg" {
 
 resource "azurerm_storage_account" "storageaccount" {
     name = "stg${random_string.uniquestring.result}"
-    resouresource_group_name = azurerm_resource_group.rg.name
+    resource_group_name = azurerm_resource_group.rg.name
     location = azurerm_resource_group.rg.location
     account_tier = "Standard"
     account_replication_type = "LRS"  
 }
+
+
